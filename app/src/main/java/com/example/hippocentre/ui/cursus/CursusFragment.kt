@@ -1,41 +1,57 @@
 package com.example.hippocentre.ui.cursus
 
+import SimpleExpandableListAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ExpandableListView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.hippocentre.R
 import com.example.hippocentre.databinding.FragmentCursusBinding
 
+// CursusFragment.kt
 class CursusFragment : Fragment() {
 
-    private var _binding: FragmentCursusBinding? = null
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var adapter: SimpleExpandableListAdapter
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val cursusViewModel =
-            ViewModelProvider(this).get(CursusViewModel::class.java)
+    ): View? {
+        // Inflate the layout for this fragment
+        val view = inflater.inflate(R.layout.fragment_cursus, container, false)
 
-        _binding = FragmentCursusBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        // Dummy data
+        val cursusList = listOf(
+            CursusItem("Options des cours", listOf(
+                "Options disciplinaires",
+                "Options professionnelles")),
+            CursusItem("Stages", listOf(
+                "CME à l'international",
+                "CME En France",
+                "Sting à l'international",
+                "Sting En France",
+                "PFE à l'international",
+                "PFE En France")),
+            CursusItem("Doubles diplômes"),
+            CursusItem("FAQ")
+        )
 
-        val textView: TextView = binding.textCursus
-        cursusViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        return root
+
+        // Set up the adapter
+        adapter = SimpleExpandableListAdapter(requireContext(), cursusList)
+        val expandableListView = view.findViewById<ExpandableListView>(R.id.cursusExpandableListView)
+        expandableListView.setAdapter(adapter)
+
+        return view
     }
 
-    override fun onDestroyView() {
+
+override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
-    }
+    var _binding = null
+}
 }

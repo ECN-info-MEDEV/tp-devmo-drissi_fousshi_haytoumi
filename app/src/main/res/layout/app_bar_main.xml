@@ -23,13 +23,13 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
-        app:srcCompat="@mipmap/chatbot" />
+        app:srcCompat="@drawable/ic_chatbot" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/cornflower_blue"
+        android:background="@color/silver"
         app:popupTheme="@style/Theme.HippoCentre.PopupOverlay" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

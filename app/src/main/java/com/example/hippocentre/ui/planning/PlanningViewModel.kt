@@ -1,13 +1,13 @@
-package com.example.hippocentre.ui.slideshow
+package com.example.hippocentre.ui.planning
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class SlideshowViewModel : ViewModel() {
+class PlanningViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is slideshow Fragment"
+        value = "This is planning Fragment"
     }
     val text: LiveData<String> = _text
 }
